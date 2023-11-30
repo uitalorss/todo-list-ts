@@ -1,13 +1,15 @@
 import 'dotenv/config';
 import { DataSource } from 'typeorm';
 
+const port = process.env.DB_PORT as number | undefined;
+
 export const dataSource = new DataSource({
     type: 'postgres',
     host: process.env.DB_HOST,
-    port: Number(process.env.DB_PASS),
-    username: process.env.DB_NAME,
-    database: process.env.DB_NAME,
+    port: port,
+    username: process.env.DB_USER,
     password: process.env.DB_PASS,
-    entities: ['./src/modules/**/infra/typeorm/entities/*.ts'],
+    database: process.env.DB_NAME,
+    entities: ['./src/modules/**/infra/orm/entities/*.ts'],
     migrations: ['./src/typeorm/migrations/*.ts'],
 });
