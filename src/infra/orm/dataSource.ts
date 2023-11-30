@@ -11,5 +11,5 @@ export const dataSource = new DataSource({
     password: process.env.DB_PASS,
     database: process.env.DB_NAME,
     entities: ['./src/modules/**/infra/orm/entities/*.ts'],
-    migrations: ['./src/typeorm/migrations/*.ts'],
+    migrations: ['./src/infra/orm/migrations/*.ts'],
 });

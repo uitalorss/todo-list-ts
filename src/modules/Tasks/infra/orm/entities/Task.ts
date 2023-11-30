@@ -21,13 +21,13 @@ export class Task implements ITask {
     @Column({ type: 'boolean', default: false })
     completed: boolean;
 
-    @ManyToOne(() => User, (user) => user.tasks)
+    @ManyToOne(() => User, (user) => user.tasks, { onDelete: 'SET NULL' })
     @JoinColumn({ name: 'user_id' })
     user: User;
 
-    @CreateDateColumn({ type: 'timestamptz' })
+    @CreateDateColumn({ type: 'timestamptz', default: 'now()' })
     created_at: Date;
 
-    @UpdateDateColumn({ type: 'timestamptz' })
+    @UpdateDateColumn({ type: 'timestamptz', default: 'now()' })
     updated_at: Date;
 }

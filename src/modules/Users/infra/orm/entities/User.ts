@@ -17,15 +17,18 @@ export class User implements IUser {
     @Column({ type: 'text' })
     name: string;
 
-    @Column()
+    @Column({ type: 'text' })
     email: string;
 
-    @OneToMany(() => Task, (task) => task.user)
+    @Column({ type: 'text' })
+    password: string;
+
+    @OneToMany(() => Task, (task) => task.user, { onDelete: 'SET NULL' })
     tasks: Task[];
 
-    @CreateDateColumn()
+    @CreateDateColumn({ type: 'timestamptz', default: 'now()' })
     created_at: Date;
 
-    @UpdateDateColumn()
+    @UpdateDateColumn({ type: 'timestamptz', default: 'now()' })
     updated_at: Date;
 }
