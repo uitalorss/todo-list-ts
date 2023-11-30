@@ -1,0 +1,24 @@
+{
+  "name": "todo-list-ts",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon --exec ts-node ./src/app.ts"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "pg": "^8.11.3",
+    "reflect-metadata": "^0.1.13",
+    "tsyringe": "^4.8.0",
+    "typeorm": "^0.3.17"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.10.1",
+    "nodemon": "^3.0.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.3.2"
+  }
+}
