@@ -1,6 +1,6 @@
 import { Repository } from 'typeorm';
 import { User } from '../entities/User';
-import { dataSource } from '../../../../../infra/orm/dataSource';
+import { dataSource } from '../../../../../shared/infra/orm/dataSource';
 import { IUserRepository } from '../../../domain/repositories/IUserRepository';
 import { IUser } from '../../../domain/models/IUser';
 import { ICreateUserDTO } from '../../../domain/models/DTO/ICreateUserDTO';

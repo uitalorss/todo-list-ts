@@ -3,7 +3,7 @@ import { ICreateTaskDTO } from '../../../domain/models/DTO/ICreateTaskDTO';
 import { ITask } from '../../../domain/models/ITask';
 import { ITaskRepository } from '../../../domain/repositories/ITaskRepository';
 import { Task } from '../entities/Task';
-import { dataSource } from '../../../../../infra/orm/dataSource';
+import { dataSource } from '../../../../../shared/infra/orm/dataSource';
 
 export class TaskRepository implements ITaskRepository {
     private ormRepository: Repository<Task>;
