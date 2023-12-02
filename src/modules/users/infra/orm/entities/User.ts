@@ -7,7 +7,7 @@ import {
     UpdateDateColumn,
 } from 'typeorm';
 import { IUser } from '../../../domain/models/IUser';
-import { Task } from '../../../../Tasks/infra/orm/entities/Task';
+import { Task } from '../../../../tasks/infra/orm/entities/Task';
 
 @Entity('users')
 export class User implements IUser {

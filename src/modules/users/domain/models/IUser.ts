@@ -1,4 +1,4 @@
-import { ITask } from '../../../Tasks/domain/models/ITask';
+import { ITask } from '../../../tasks/domain/models/ITask';
 
 export interface IUser {
     id: string;

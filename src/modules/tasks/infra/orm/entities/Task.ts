@@ -8,7 +8,7 @@ import {
     UpdateDateColumn,
 } from 'typeorm';
 import { ITask } from '../../../domain/models/ITask';
-import { User } from '../../../../Users/infra/orm/entities/User';
+import { User } from '../../../../users/infra/orm/entities/User';
 
 @Entity('tasks')
 export class Task implements ITask {

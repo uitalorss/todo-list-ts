@@ -1,4 +1,4 @@
-import { IUser } from '../../../../Users/domain/models/IUser';
+import { IUser } from '../../../../users/domain/models/IUser';
 
 export interface ICreateTaskDTO {
     description: string;

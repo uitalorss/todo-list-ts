@@ -1,8 +1,8 @@
 import { container } from 'tsyringe';
-import { IUserRepository } from '../../modules/Users/domain/repositories/IUserRepository';
-import { UserRepository } from '../../modules/Users/infra/orm/repositories/UserRepository';
-import { ITaskRepository } from '../../modules/Tasks/domain/repositories/ITaskRepository';
-import { TaskRepository } from '../../modules/Tasks/infra/orm/repositories/TaskRepository';
+import { IUserRepository } from '../../modules/users/domain/repositories/IUserRepository';
+import { UserRepository } from '../../modules/users/infra/orm/repositories/UserRepository';
+import { ITaskRepository } from '../../modules/tasks/domain/repositories/ITaskRepository';
+import { TaskRepository } from '../../modules/tasks/infra/orm/repositories/TaskRepository';
 
 container.registerSingleton<IUserRepository>('UserRepository', UserRepository);
 container.registerSingleton<ITaskRepository>('TaskRepository', TaskRepository);
