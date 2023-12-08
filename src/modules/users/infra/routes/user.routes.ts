@@ -6,3 +6,4 @@ const userController = new UserController();
 
 userRoutes.post('/', userController.create);
 userRoutes.get('/:id', userController.show);
+userRoutes.put('/:id', userController.update);
