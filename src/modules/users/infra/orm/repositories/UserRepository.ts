@@ -3,7 +3,7 @@ import { User } from '../entities/User';
 import { dataSource } from '../../../../../shared/infra/orm/dataSource';
 import { IUserRepository } from '../../../domain/repositories/IUserRepository';
 import { IUser } from '../../../domain/models/IUser';
-import { ICreateUserDTO } from '../../../domain/models/DTO/ICreateUserDTO';
+import { CreateUserDTO } from '../../../domain/models/DTO/UserDTO';
 
 export class UserRepository implements IUserRepository {
     private ormRepository: Repository<User>;
@@ -14,7 +14,7 @@ export class UserRepository implements IUserRepository {
         name,
         email,
         password,
-    }: ICreateUserDTO): Promise<IUser> {
+    }: CreateUserDTO): Promise<IUser> {
         const user = this.ormRepository.create({
             name,
             email,

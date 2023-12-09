@@ -22,9 +22,9 @@ export class UserController {
 
     public async update(req: Request, res: Response) {
         const { id } = req.params;
-        const { name, email, oldPassword, newPassword } = req.body;
+        const { name, email, password } = req.body;
         const updateUser = container.resolve(UpdateUserService);
-        await updateUser.execute({ id, name, email, newPassword, oldPassword });
+        await updateUser.execute(id, { name, email, password });
         return res.status(204).send();
     }
 }

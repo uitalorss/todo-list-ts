@@ -1,6 +1,6 @@
 import { hash } from 'bcrypt';
 import { BadRequestError } from '../../../shared/errors/ApiError';
-import { ICreateUserDTO } from '../domain/models/DTO/ICreateUserDTO';
+import { CreateUserDTO } from '../domain/models/DTO/UserDTO';
 import { IUserRepository } from '../domain/repositories/IUserRepository';
 import { inject, injectable } from 'tsyringe';
 
@@ -11,7 +11,7 @@ export class CreateUserService {
         private userRepository: IUserRepository
     ) {}
 
-    public async execute({ name, email, password }: ICreateUserDTO) {
+    public async execute({ name, email, password }: CreateUserDTO) {
         const isValidEmail = await this.userRepository.findByEmail(email);
         if (isValidEmail) {
             throw new BadRequestError('Email já cadastrado na apliação');

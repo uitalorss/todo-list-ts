@@ -15,3 +15,5 @@ export const UserSchema = z.object({
         .min(5, 'Favor informar uma senha maior')
         .max(20, 'favor informar uma senha menor'),
 });
+
+export const partialUserSchema = UserSchema.partial();
