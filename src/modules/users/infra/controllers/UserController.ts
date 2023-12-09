@@ -3,6 +3,7 @@ import { CreateUserService } from '../../services/CreateUserService';
 import { container } from 'tsyringe';
 import { ShowUserService } from '../../services/ShowUserService';
 import { UpdateUserService } from '../../services/UpdateUserService';
+import { instanceToInstance } from 'class-transformer';
 
 export class UserController {
     public async create(req: Request, res: Response) {
@@ -14,14 +15,14 @@ export class UserController {
     }
 
     public async show(req: Request, res: Response) {
-        const { id } = req.params;
+        const { id } = req.user;
         const showUser = container.resolve(ShowUserService);
         const user = await showUser.execute(id);
-        return res.status(200).json(user);
+        return res.status(200).json(instanceToInstance(user));
     }
 
     public async update(req: Request, res: Response) {
-        const { id } = req.params;
+        const { id } = req.user;
         const { name, email, password } = req.body;
         const updateUser = container.resolve(UpdateUserService);
         await updateUser.execute(id, { name, email, password });

@@ -1,3 +1,5 @@
+import dotenv from 'dotenv';
+dotenv.config();
 import { inject, injectable } from 'tsyringe';
 import { IUserRepository } from '../domain/repositories/IUserRepository';
 import { ISessionDTO } from '../domain/models/DTO/ISessionDTO';
@@ -20,8 +22,10 @@ export class CreateSessionService {
         if (!validatePassword) {
             throw new BadRequestError('Usuário e/ou senha inválidos.');
         }
-        const token = sign({}, 'todolistapi', {
-            subject: user.id,
+        if (!process.env.JWT_KEY) {
+            throw new BadRequestError('Erro na validação da sessão');
+        }
+        const token = sign({ id: user.id }, process.env.JWT_KEY, {
             expiresIn: '8h',
         });
 

@@ -6,6 +6,7 @@ import {
     PrimaryGeneratedColumn,
     UpdateDateColumn,
 } from 'typeorm';
+import { Exclude } from 'class-transformer';
 import { IUser } from '../../../domain/models/IUser';
 import { Task } from '../../../../tasks/infra/orm/entities/Task';
 
@@ -21,6 +22,7 @@ export class User implements IUser {
     email: string;
 
     @Column({ type: 'text' })
+    @Exclude()
     password: string;
 
     @OneToMany(() => Task, (task) => task.user, { onDelete: 'SET NULL' })
