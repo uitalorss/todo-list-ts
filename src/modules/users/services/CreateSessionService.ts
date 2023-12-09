@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 import { inject, injectable } from 'tsyringe';
 import { IUserRepository } from '../domain/repositories/IUserRepository';
-import { ISessionDTO } from '../domain/models/DTO/ISessionDTO';
+import { SessionDTO } from '../domain/models/DTO/SessionDTO';
 import { BadRequestError } from '../../../shared/errors/ApiError';
 import { compare } from 'bcrypt';
 import { sign } from 'jsonwebtoken';
@@ -13,7 +13,7 @@ export class CreateSessionService {
         @inject('UserRepository')
         private userRepository: IUserRepository
     ) {}
-    public async execute({ email, password }: ISessionDTO) {
+    public async execute({ email, password }: SessionDTO) {
         const user = await this.userRepository.findByEmail(email);
         if (!user) {
             throw new BadRequestError('Usuário e/ou senha inválidos.');

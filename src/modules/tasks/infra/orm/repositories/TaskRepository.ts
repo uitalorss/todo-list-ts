@@ -4,6 +4,7 @@ import { ITask } from '../../../domain/models/ITask';
 import { ITaskRepository } from '../../../domain/repositories/ITaskRepository';
 import { Task } from '../entities/Task';
 import { dataSource } from '../../../../../shared/infra/orm/dataSource';
+import { IUser } from '../../../../users/domain/models/IUser';
 
 export class TaskRepository implements ITaskRepository {
     private ormRepository: Repository<Task>;
@@ -18,14 +19,21 @@ export class TaskRepository implements ITaskRepository {
         await this.ormRepository.save(task);
         return task;
     }
-    public async find(): Promise<ITask[]> {
-        const tasks = await this.ormRepository.find();
-        return tasks;
-    }
+
     public async findById(id: string): Promise<ITask | null> {
         const task = this.ormRepository.findOneBy({ id });
         return task;
     }
+
+    public async findByUser(user: IUser): Promise<ITask[]> {
+        const tasks = this.ormRepository.find({
+            where: {
+                user,
+            },
+        });
+        return tasks;
+    }
+
     public async save(task: ITask): Promise<ITask> {
         await this.ormRepository.save(task);
         return task;
