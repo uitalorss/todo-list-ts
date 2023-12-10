@@ -29,7 +29,14 @@ export class UserRepository implements IUserRepository {
         return users;
     }
     public async findById(id: string): Promise<IUser | null> {
-        const user = await this.ormRepository.findOneBy({ id });
+        const user = await this.ormRepository.findOne({
+            where: {
+                id,
+            },
+            relations: {
+                tasks: true,
+            },
+        });
         return user;
     }
     public async findByEmail(email: string): Promise<IUser | null> {

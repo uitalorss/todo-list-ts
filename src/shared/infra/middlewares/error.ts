@@ -10,5 +10,6 @@ export const requestError = (
 ) => {
     const statusCode = error.statusCode ?? 500;
     const message = error.statusCode ? error.message : 'Internal Server Error';
+    console.log(error.message);
     return res.status(statusCode).json({ message });
 };

@@ -30,6 +30,9 @@ export class TaskRepository implements ITaskRepository {
             where: {
                 user,
             },
+            relations: {
+                user: true,
+            },
         });
         return tasks;
     }
