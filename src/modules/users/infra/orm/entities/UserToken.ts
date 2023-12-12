@@ -15,6 +15,6 @@ export class UserToken {
     token: string;
     @Column()
     user_id: string;
-    @CreateDateColumn({ type: 'timestamptz', default: 'now()' })
+    @CreateDateColumn({ type: 'timestamptz' })
     created_at: Date;
 }

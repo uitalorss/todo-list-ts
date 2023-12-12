@@ -3,7 +3,17 @@ import { IUserRepository } from '../domain/repositories/IUserRepository';
 import { IUserTokenRepository } from '../domain/repositories/IUserTokenRepository';
 import { SendForgotPasswordEmailDTO } from '../domain/models/DTO/ChangePasswordDTO';
 import { NotFoundError } from '../../../shared/errors/ApiError';
-import { transport } from '../../../config/Mail';
+import { Mail } from '../../../config/Mail';
+import path from 'path';
+
+const mailTemplate = path.resolve(
+    __dirname,
+    '..',
+    '..',
+    '..',
+    'templates',
+    'ResetPassword.hbs'
+);
 
 @injectable()
 export class SendForgotPasswordEmailService {
@@ -20,12 +30,16 @@ export class SendForgotPasswordEmailService {
         }
 
         const userToken = await this.userTokenRepository.generateToken(user.id);
-
-        transport.sendMail({
-            from: `${process.env.MAIL_FROM} <${process.env.MAIL_FROM}>`,
-            to: user.email,
-            subject: 'Redefina sua senha',
-            text: userToken.token,
+        await Mail.sendMail({
+            email: user.email,
+            subject: 'Redefinição de senha',
+            template: {
+                template: mailTemplate,
+                variables: {
+                    name: user.name,
+                    token: userToken.token,
+                },
+            },
         });
     }
 }

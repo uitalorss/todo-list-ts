@@ -28,9 +28,9 @@ export class User implements IUser {
     @OneToMany(() => Task, (task) => task.user, { onDelete: 'SET NULL' })
     tasks: Task[];
 
-    @CreateDateColumn({ type: 'timestamptz', default: 'now()' })
+    @CreateDateColumn({ type: 'timestamptz' })
     created_at: Date;
 
-    @UpdateDateColumn({ type: 'timestamptz', default: 'now()' })
+    @UpdateDateColumn({ type: 'timestamptz' })
     updated_at: Date;
 }
