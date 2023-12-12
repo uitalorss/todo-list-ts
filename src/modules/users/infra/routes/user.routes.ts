@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import { UserController } from '../controllers/UserController';
 import { validateRequest } from '../middlewares/validateRequest';
 import { UserSchema, partialUserSchema } from '../../domain/schemas/UserSchema';
 import { handleAuthentication } from '../../../../shared/infra/middlewares/handleAuthentication';
+import { UserController } from '../controllers/UserController';
 
 export const userRoutes = Router();
 const userController = new UserController();

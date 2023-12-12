@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
-import { CreateUserService } from '../../services/CreateUserService';
 import { container } from 'tsyringe';
+import { instanceToInstance } from 'class-transformer';
+import { CreateUserService } from '../../services/CreateUserService';
 import { ShowUserService } from '../../services/ShowUserService';
 import { UpdateUserService } from '../../services/UpdateUserService';
-import { instanceToInstance } from 'class-transformer';
 
 export class UserController {
     public async create(req: Request, res: Response) {
